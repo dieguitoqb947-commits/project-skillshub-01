@@ -1,4 +1,15 @@
-export type CurrencyCode = 'USD' | 'COP' | 'EUR' | 'MXN';
+export type CurrencyCode =
+  | 'USD'
+  | 'ARS'
+  | 'BRL'
+  | 'CAD'
+  | 'CLP'
+  | 'COP'
+  | 'CRC'
+  | 'EUR'
+  | 'MXN'
+  | 'PEN'
+  | 'UYU';
 
 export type SkillCategory = 'Tecnología' | 'Idiomas' | 'Diseño' | 'Negocios';
 
@@ -19,10 +30,11 @@ export interface TalentProfile {
   portfolioUrl?: string;
 }
 
-export interface ExchangeRateResponse {
-  base: CurrencyCode;
+export interface ExchangeRateQuote {
   date: string;
-  rates: Omit<CurrencyRates, 'USD'>;
+  base: string;
+  quote: Exclude<CurrencyCode, 'USD'>;
+  rate: number;
 }
 
 export type TalentFilterState = {
