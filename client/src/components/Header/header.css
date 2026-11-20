@@ -60,3 +60,21 @@
 .header__cta:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.75rem 1rem;
+  }
+  .header__nav {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 1.25rem;
+  }
+  .header__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+  }
+}

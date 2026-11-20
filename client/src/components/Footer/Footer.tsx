@@ -27,6 +27,7 @@ const Footer = () => {
 
         <p className="footer__copy">
           &copy; {new Date().getFullYear()} SkillsHub. Todos los derechos reservados.
+
         </p>
       </div>
     </footer>

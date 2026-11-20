@@ -1,0 +1,148 @@
+import type { SkillAuction } from '../types';
+
+export const skills: SkillAuction[] = [
+  {
+    id: 'skill-1',
+    title: 'Depuración de React con TypeScript',
+    category: 'Tecnología',
+    startingBid: 35,
+    currentBid: 48,
+    description:
+      'Sesión para localizar errores de tipado, estados y efectos en un proyecto React. Revisamos el código juntos y dejamos un plan de corrección.',
+    mentorName: 'Camila Herrera',
+    duration: 60,
+    endsAt: '2026-12-02T18:00:00.000Z',
+  },
+  {
+    id: 'skill-2',
+    title: 'API REST con Express y MongoDB',
+    category: 'Tecnología',
+    startingBid: 40,
+    currentBid: 55,
+    description:
+      'Diseñamos rutas, validación y un esquema de Mongoose para una API pequeña. Incluye manejo de errores y una prueba manual de los endpoints.',
+    mentorName: 'Andrés Molina',
+    duration: 90,
+    endsAt: '2026-12-04T16:30:00.000Z',
+  },
+  {
+    id: 'skill-3',
+    title: 'Git para trabajo en equipo',
+    category: 'Tecnología',
+    startingBid: 20,
+    currentBid: 28,
+    description:
+      'Ramas, pull requests y resolución de conflictos en un flujo real. Sales con una convención de commits que puedes aplicar al día siguiente.',
+    mentorName: 'Laura Peña',
+    duration: 45,
+    endsAt: '2026-11-28T15:00:00.000Z',
+  },
+  {
+    id: 'skill-4',
+    title: 'Inglés para entrevistas técnicas',
+    category: 'Idiomas',
+    startingBid: 25,
+    currentBid: 32,
+    description:
+      'Practicamos presentación personal, explicación de proyectos y respuestas a preguntas frecuentes de una entrevista en inglés.',
+    mentorName: 'Sofía Duarte',
+    duration: 45,
+    endsAt: '2026-12-01T20:00:00.000Z',
+  },
+  {
+    id: 'skill-5',
+    title: 'Conversación en inglés para el trabajo',
+    category: 'Idiomas',
+    startingBid: 22,
+    currentBid: 22,
+    description:
+      'Simulamos reuniones, actualizaciones de estado y pedidos de feedback. Corrijo pronunciación y te dejo frases listas para usar.',
+    mentorName: 'Daniel Ortiz',
+    duration: 60,
+    endsAt: '2026-12-06T17:00:00.000Z',
+  },
+  {
+    id: 'skill-6',
+    title: 'Portugués básico para viajes',
+    category: 'Idiomas',
+    startingBid: 18,
+    currentBid: 24,
+    description:
+      'Vocabulario esencial para transporte, comida y emergencias. Terminamos con un diálogo corto que puedes repetir antes del viaje.',
+    mentorName: 'Marina Costa',
+    duration: 45,
+    endsAt: '2026-12-08T14:00:00.000Z',
+  },
+  {
+    id: 'skill-7',
+    title: 'Landing page con CSS moderno',
+    category: 'Diseño',
+    startingBid: 30,
+    currentBid: 41,
+    description:
+      'Maquetamos una página con Flexbox, Grid y una jerarquía visual clara. Revisamos espaciado, tipografía y comportamiento en móvil.',
+    mentorName: 'Valentina Ríos',
+    duration: 75,
+    endsAt: '2026-12-03T19:00:00.000Z',
+  },
+  {
+    id: 'skill-8',
+    title: 'Sistema visual para un producto',
+    category: 'Diseño',
+    startingBid: 45,
+    currentBid: 60,
+    description:
+      'Definimos color, tipo y componentes base para que una interfaz se vea consistente. Entregamos una mini guía que puedes reutilizar.',
+    mentorName: 'Julián Castro',
+    duration: 90,
+    endsAt: '2026-12-10T16:00:00.000Z',
+  },
+  {
+    id: 'skill-9',
+    title: 'Figma para desarrolladores',
+    category: 'Diseño',
+    startingBid: 28,
+    currentBid: 36,
+    description:
+      'Leemos un archivo de Figma: auto layout, variantes y medidas. Al final sabes qué preguntar antes de implementar una pantalla.',
+    mentorName: 'Elena Vargas',
+    duration: 60,
+    endsAt: '2026-11-30T18:30:00.000Z',
+  },
+  {
+    id: 'skill-10',
+    title: 'Pitch de un proyecto personal',
+    category: 'Negocios',
+    startingBid: 32,
+    currentBid: 44,
+    description:
+      'Ordenamos problema, solución y siguiente paso en un pitch de tres minutos. Ensayamos la versión corta y la versión para una reunión.',
+    mentorName: 'Ricardo Méndez',
+    duration: 45,
+    endsAt: '2026-12-05T21:00:00.000Z',
+  },
+  {
+    id: 'skill-11',
+    title: 'Presupuesto para freelance',
+    category: 'Negocios',
+    startingBid: 26,
+    currentBid: 33,
+    description:
+      'Calculamos tarifa, horas y margen de un servicio puntual. Sales con una plantilla simple para cotizar sin improvisar el precio.',
+    mentorName: 'Paula Navarro',
+    duration: 60,
+    endsAt: '2026-12-07T15:30:00.000Z',
+  },
+  {
+    id: 'skill-12',
+    title: 'Plan de lanzamiento en 30 días',
+    category: 'Negocios',
+    startingBid: 38,
+    currentBid: 50,
+    description:
+      'Armamos un calendario de tareas, métrica principal y canales para publicar un producto pequeño. Priorizamos lo que cabe en un mes.',
+    mentorName: 'Héctor Salinas',
+    duration: 75,
+    endsAt: '2026-12-12T17:30:00.000Z',
+  },
+];

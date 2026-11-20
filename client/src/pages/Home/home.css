@@ -39,7 +39,7 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-family: 'Times New Roman Condensed';
-  font-size: clamp(10rem, 20vw, 20rem);
+  font-size: clamp(3.5rem, 18vw, 12rem);
 }
 
 .home__title-accent {
@@ -191,22 +191,16 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .home__hero {
-    padding: 10rem 3rem 6rem;
+    padding: 8rem 1rem 3rem;
   }
-
-
   .home__section {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    align-items: start;
-    gap: 3rem;
-    padding: 5.5rem 2rem;
+    padding: 3rem 1rem;
   }
-
-  .home__heading {
-    position: sticky;
-    top: 7rem;
+  .home__cards,
+  .home__steps {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
