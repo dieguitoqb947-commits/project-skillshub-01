@@ -1,6 +1,6 @@
 # Skills Hub — Plataforma de Descubrimiento de Talento y Ofertas Competitivas
 
-**Skills Hub** es una plataforma web full-stack diseñada para conectar empresas con profesionales calificados de todo el mundo. Permite a las organizaciones buscar talento según habilidades concretas, explorar perfiles profesionales, comparar expectativas de compensación convertidas en tiempo real mediante la **[Frankfurter API](https://www.frankfurter.app/)** (`USD`, `COP`, `EUR`, `MXN`) y presentar ofertas competitivas.
+**Skills Hub** es una plataforma web full-stack diseñada para conectar empresas con profesionales calificados de todo el mundo. Permite a las organizaciones buscar talento según habilidades concretas, explorar perfiles profesionales, comparar expectativas de compensación convertidas en tiempo real mediante la **[Frankfurter API](https://frankfurter.dev/)** (ARS, BRL, CAD, CLP, COP, CRC, EUR, MXN, PEN, USD y UYU) y presentar ofertas competitivas.
 
 ---
 
@@ -16,7 +16,7 @@
 * **Descubrimiento de Talento:** Búsqueda de profesionales por habilidades, categorías y ubicación.
 * **Perfiles Profesionales:** Consulta de habilidades clave, experiencia, portafolios, disponibilidad y compensación base.
 * **Ofertas Competitivas:** Posibilidad de que las empresas envíen propuestas de compensación para que el talento evalúe, acepte, rechace o negocie oportunidades.
-* **Conversión de Divisas en Tiempo Real:** Integración tipada con `fetch()` a la **[Frankfurter API](https://www.frankfurter.app/)** para interpretar valores de compensación entre distintas monedas.
+* **Conversión de Divisas en Tiempo Real:** Integración tipada con `fetch()` a la **[Frankfurter API](https://frankfurter.dev/)** para interpretar valores de compensación entre distintas monedas.
 * **Alcance Global:** Conexión directa entre empleadores y profesionales across distintos países y mercados.
 
 ---
@@ -32,7 +32,7 @@
 
 ### Front End (Rama `stage-frontend`)
 * **Tipos, Constantes y Datos Iniciales:** Interfaces de TypeScript (`SkillAuction` / perfil de talento, `CurrencyRates`), constantes de configuración y conjuntos de datos con IDs únicos.
-* **Servicio de Divisas (`utils/currencyApi.ts`):** Consulta asíncrona tipada a la **[Frankfurter API](https://www.frankfurter.app/)** con manejo explícito de errores HTTP, formato y red.
+* **Servicio de Divisas (`utils/currencyApi.ts`):** Consulta asíncrona tipada a la **[Frankfurter API](https://frankfurter.dev/)** con manejo explícito de errores HTTP, formato y red.
 * **Navegación y Vistas:** Barra superior responsiva (`320px` a `1440px`) con **React Router**, vista de introducción (`/`), vista de exploración con buscador (`required` + `placeholder`), selector de moneda y resultados en la misma página, tarjetas en cuadrícula (`Flex`/`Grid`) y vista *"Sobre el autor"* (`/about`).
 
 ### Back End y Conexión Full Stack (Rama `stage-fullstack`)
@@ -45,7 +45,7 @@
 
 * **Front End (`client/`):** React, TypeScript, Vite, React Router DOM, Vanilla CSS (BEM), `normalize.css`.
 * **Back End (`server/`):** Node.js, Express, TypeScript, MongoDB / Mongoose, autenticación y validación en servidor.
-* **API Externa:** **[Frankfurter Currency Exchange API](https://api.frankfurter.app/)**.
+* **API Externa:** **[Frankfurter Currency Exchange API](https://api.frankfurter.dev/)**.
 
 ---
 

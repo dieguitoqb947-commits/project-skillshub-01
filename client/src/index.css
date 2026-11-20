@@ -42,3 +42,13 @@ body {
 main {
   flex: 1;
 }
+
+:focus-visible {
+  outline: 2px solid #1d4f78;
+  outline-offset: 2px;
+}
+
+.header :focus-visible,
+.footer :focus-visible {
+  outline-color: #ffffff;
+}
