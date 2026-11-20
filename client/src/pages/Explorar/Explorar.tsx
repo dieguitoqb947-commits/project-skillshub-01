@@ -18,7 +18,11 @@ const Explorar = () => {
 
    const onSearchSubmit = (event: SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
-      searchQuery.trim().length > 0 ? setAppliedQuery(searchQuery) : setAppliedQuery(null);
+      if (searchQuery.trim().length > 0) {
+        setAppliedQuery(searchQuery);
+      } else {
+        setAppliedQuery(null);
+      }
       setVisibleCount(ITEMS_PER_PAGE);
    };
 
