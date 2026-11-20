@@ -19,5 +19,5 @@ export interface SkillAuction {
 export interface ExchangeRateResponse {
     base: CurrencyCode;
     date: string;
-    rates: CurrencyRates;
+    rates: Omit<CurrencyRates, 'USD'>;
 }

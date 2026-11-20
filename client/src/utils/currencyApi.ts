@@ -15,7 +15,10 @@ export const fetchExchangeRates = async () : Promise<CurrencyRates> => {
         if(!data.rates) {
             throw new Error('Invalid response format');
         }
-        return data.rates as CurrencyRates;
+        return {
+            USD: 1,
+            ...data.rates,
+        }
 
     }catch (error) {
         console.error('Error fetching exchange rates:', error);
