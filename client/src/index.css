@@ -1,5 +1,9 @@
 @import './vendor/normalize.css';
 @import './vendor/fonts.css';
+@import './components/Header/header.css';
+@import './pages/Home/home.css';
+@import './components/Footer/footer.css';
+
 
 :root {
   --font-family:
@@ -25,4 +29,14 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
