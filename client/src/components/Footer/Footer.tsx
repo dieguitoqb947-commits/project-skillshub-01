@@ -9,13 +9,16 @@ const Footer = () => {
             SkillsHub
           </Link>
           <p className="footer__description">
-            Subastas de habilidades y micro-mentorías con pujas en tu moneda.
+            Descubrimiento de talento global con compensación comparada en tu moneda.
           </p>
         </div>
 
         <nav className="footer__nav" aria-label="Enlaces del pie de página">
           <Link to="/" className="footer__link">
             Inicio
+          </Link>
+          <Link to="/explorar" className="footer__link">
+            Explorar talento
           </Link>
           <Link to="/about" className="footer__link">
             Sobre el autor

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 interface HomeCard {
   id: string;
@@ -9,41 +9,41 @@ interface HomeCard {
 const FEATURES: HomeCard[] = [
   {
     id: 'explore',
-    title: 'Explora subastas',
-    text: 'Busca por palabra clave entre micro-mentorías, asesorías técnicas y servicios especializados.',
+    title: 'Descubre talento',
+    text: 'Busca profesionales por habilidades, categorías y ubicación en un solo lugar.',
   },
   {
     id: 'filter',
     title: 'Filtra por categoría',
-    text: 'Encuentra lo que necesitas en Tecnología, Idiomas, Diseño o Negocios.',
+    text: 'Encuentra perfiles en Tecnología, Idiomas, Diseño o Negocios según lo que tu equipo necesita.',
   },
   {
     id: 'currency',
-    title: 'Pujas en tu moneda',
-    text: 'Consulta la puja base convertida a USD, COP, EUR o MXN con tasas de cambio actualizadas.',
+    title: 'Compensación en tu moneda',
+    text: 'Consulta expectativas base en USD, COP, EUR o MXN con tasas actualizadas de Frankfurter.',
   },
   {
     id: 'detail',
-    title: 'Revisa cada detalle',
-    text: 'Abre una subasta para conocer al mentor, la descripción de la habilidad y su puja base.',
+    title: 'Perfiles detallados',
+    text: 'Revisa experiencia, disponibilidad, habilidades clave y portafolio antes de contactar al talento.',
   },
 ];
 
 const AUDIENCES: HomeCard[] = [
   {
-    id: 'mentors',
-    title: 'Mentores y expertos',
-    text: 'Comparte lo que sabes en sesiones cortas y deja que el interés de la comunidad defina su valor.',
+    id: 'companies',
+    title: 'Empresas y reclutadores',
+    text: 'Contrata por competencias reales y prepara ofertas competitivas con datos claros.',
   },
   {
-    id: 'students',
-    title: 'Estudiantes',
-    text: 'Resuelve dudas puntuales con alguien que ya recorrió el camino, sin pagar un curso completo.',
+    id: 'freelancers',
+    title: 'Freelancers y especialistas',
+    text: 'Gana visibilidad internacional y transparencia en cómo se interpreta tu compensación.',
   },
   {
-    id: 'professionals',
-    title: 'Profesionales',
-    text: 'Consigue asesoría especializada para destrabar un proyecto o prepararte para un nuevo reto.',
+    id: 'global',
+    title: 'Equipos globales',
+    text: 'Conecta talento en distintos países sin perder contexto local ni de moneda.',
   },
 ];
 
@@ -51,17 +51,17 @@ const STEPS: HomeCard[] = [
   {
     id: 'search',
     title: 'Busca una habilidad',
-    text: 'Escribe lo que quieres aprender o elige una categoría.',
+    text: 'Escribe el rol o la competencia que necesitas cubrir.',
   },
   {
     id: 'compare',
-    title: 'Compara las pujas',
-    text: 'Cambia la moneda y revisa cuánto cuesta cada micro-mentoría.',
+    title: 'Compara compensación',
+    text: 'Cambia la moneda y revisa la expectativa base de cada perfil.',
   },
   {
-    id: 'choose',
-    title: 'Elige tu mentoría',
-    text: 'Abre el detalle y quédate con la opción que mejor se ajusta a ti.',
+    id: 'offer',
+    title: 'Prepara tu oferta',
+    text: 'Abre el detalle del profesional y define una propuesta competitiva.',
   },
 ];
 
@@ -69,25 +69,24 @@ const Home = () => {
   return (
     <div className="home">
       <section className="home__hero" aria-labelledby="home-title">
-
         <h1 className="home__title" id="home-title">
           Skills<span className="home__title-accent">Hub</span>
         </h1>
-        <p className="home__tagline">La web donde subastas tus habilidades.</p>
+        <p className="home__tagline">
+          Descubrimiento de talento y ofertas competitivas en un solo lugar.
+        </p>
         <p className="home__lead">
-          Conectamos a mentores, profesionales y estudiantes que quieren ofrecer o conseguir
-          micro-mentorías y asesorías mediante un sistema de subastas, con pujas que puedes ver en
-          tu moneda.
+          Conectamos empresas con profesionales calificados en todo el mundo. Explora perfiles,
+          compara compensación en varias monedas y toma decisiones con información clara.
         </p>
         <div className="home__buttons">
           <a className="home__btn home__btn-outline" href="#como-funciona">
             Cómo funciona
           </a>
-          <Link to="/signin" className="home__btn home__btn-primary" >
-            Comenzar
+          <Link to="/explorar" className="home__btn home__btn-primary">
+            Explorar talento
           </Link>
         </div>
-
       </section>
 
       <section className="home__section" aria-labelledby="home-features">

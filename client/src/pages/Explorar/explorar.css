@@ -1,0 +1,36 @@
+.explorar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100dvh;
+  padding: 3rem 1.25rem 4rem;
+  box-sizing: border-box;
+}
+
+.explorar__intro {
+  max-width: 42rem;
+  text-align: center;
+}
+
+.explorar__title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: #285c86;
+  line-height: 1.15;
+}
+
+.explorar__lead {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.explorar__search {
+  width: 100%;
+  max-width: 600px;
+}

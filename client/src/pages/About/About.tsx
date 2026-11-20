@@ -9,7 +9,11 @@ const About = () => {
       </section>
       <section>
         <h2>Sobre el proyecto</h2>
-        <p>Aplicación full stack que integra una API third-party con autenticación personalizada.</p>
+        <p>
+          Plataforma para explorar perfiles profesionales y comparar expectativas de
+          compensación mediante la Frankfurter API (USD, COP, EUR, MXN). En etapas
+          posteriores incluye autenticación y gestión de ofertas competitivas.
+        </p>
       </section>
     </div>
   );

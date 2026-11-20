@@ -3,6 +3,7 @@
 @import './components/Header/header.css';
 @import './pages/Home/home.css';
 @import './components/Footer/footer.css';
+@import './components/SearchBar/searchBar.css';
 
 
 :root {
