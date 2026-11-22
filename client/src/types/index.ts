@@ -19,6 +19,7 @@ export interface TalentProfile {
   id: string;
   roleTitle: string;
   category: SkillCategory;
+  currency: CurrencyCode;
   baseCompensation: number;
   summary: string;
   fullName: string;

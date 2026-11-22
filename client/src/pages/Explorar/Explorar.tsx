@@ -57,48 +57,54 @@ const Explorar = () => {
   return (
     <CurrencyProvider>
     <section className="explorar" aria-labelledby="explorar-title">
-      <header className="explorar__intro">
-        <h1 className="explorar__title" id="explorar-title">
-          Encuentra talento para tu equipo
+      <aside className="explorar__panel">
+      <h1 className="explorar__panel-title" id="home-title">
+          Skills<span className="explorar__panel-title-accent">Hub</span>
         </h1>
-        <p className="explorar__lead">
-          Busca por habilidad, categoría o ubicación. Compara la compensación base en
-          tu moneda y revisa perfiles listos para ofertas competitivas.
-        </p>
-      </header>
-      <CurrencyConverter />
-      <div className="explorar__search">
-        <SearchBar 
-        searchQuery={searchQuery}
-        onSearchQueryChange={(event) => setSearchQuery(event.target.value)}
-        onSearchSubmit={onSearchSubmit}
-        onClearSearch={onClearSearch}
-        hasActiveSearch={searchQuery.trim().length > 0}
-        
-        />
+        <CurrencyConverter />
+      </aside>
+      <div className="explorar__main">
+        <header className="explorar__intro">
+          <h1 className="explorar__title" id="explorar-title">
+            Encuentra talento para tu equipo
+          </h1>
+          <p className="explorar__lead">
+            Busca por habilidad, categoría o ubicación. Compara la compensación base en
+            tu moneda y revisa perfiles listos para ofertas competitivas.
+          </p>
+        </header>
+        <div className="explorar__search">
+          <SearchBar
+            searchQuery={searchQuery}
+            onSearchQueryChange={(event) => setSearchQuery(event.target.value)}
+            onSearchSubmit={onSearchSubmit}
+            onClearSearch={onClearSearch}
+            hasActiveSearch={searchQuery.trim().length > 0}
+          />
+        </div>
+        {profiles.length === 0 ? (
+          <p className="explorar__empty">No hay perfiles que coincidan con tu búsqueda.</p>
+        ) : (
+          <>
+            <ul className="explorar__grid">
+              {visibleProfiles.map((profile) => (
+                <li key={profile.id}>
+                  <TalentCard profile={profile} onOpen={setSelectedProfile} />
+                </li>
+              ))}
+            </ul>
+            {hasMore ? (
+              <button
+                type="button"
+                className="explorar__load-more"
+                onClick={() => setVisibleCount((count) => count + ITEMS_PER_PAGE)}
+              >
+                Cargar más
+              </button>
+            ) : null}
+          </>
+        )}
       </div>
-      {profiles.length === 0 ? (
-  <p className="explorar__empty">No hay perfiles que coincidan con tu búsqueda.</p>
-) : (
-  <>
-  <ul className="explorar__grid">
-    {visibleProfiles.map((profile) => (
-      <li key={profile.id}>
-        <TalentCard profile={profile} onOpen={setSelectedProfile} />
-      </li>
-    ))}
-  </ul>
-  {hasMore ? (
-    <button
-      type="button"
-      className="explorar__load-more"
-      onClick={() => setVisibleCount((count) => count + ITEMS_PER_PAGE)}
-    >
-      Cargar más
-    </button>
-  ) : null}
-  </>
-)}
     </section>
     <TalentDetailModal
       profile={selectedProfile}

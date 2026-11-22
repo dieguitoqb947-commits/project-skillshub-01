@@ -1,22 +1,34 @@
-import { useState } from 'react';
+import { useState, type SubmitEvent } from 'react';
 import { SUPPORTED_CURRENCIES } from '../../utils/constants';
 import type { CurrencyCode } from '../../types';
 import { useCurrency } from '../../context/CurrencyContext';
-import { formatMoney, toUsd } from '../../utils/localCurrency';
+import { useFormValidation } from '../../hooks/formValidation';
 import './currencyConverter.css';
 
 const CurrencyConverter = () => {
-  const { currencyCode, setCurrencyCode, rates, isLoading, error } = useCurrency();
+  const { currencyCode, setCurrencyCode, rates, quotes, isLoading, error } = useCurrency();
   const [amount, setAmount] = useState('');
+  const [submittedAmount, setSubmittedAmount] = useState<number | null>(null);
+  const { error: amountError, validateAmount } = useFormValidation();
 
-  const parsedAmount = Number(amount);
   const rate = rates?.[currencyCode];
-  const canConvert =
-    amount.trim() !== '' &&
-    Number.isFinite(parsedAmount) &&
-    rate !== undefined &&
-    rate > 0;
-  const usdBudget = canConvert ? toUsd(parsedAmount, currencyCode, rate) : null;
+  const usdBudget =
+    submittedAmount !== null && rate !== undefined && rate > 0
+      ? currencyCode === 'USD'
+        ? submittedAmount
+        : submittedAmount / rate
+      : null;
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!validateAmount(amount)) {
+      setSubmittedAmount(null);
+      return;
+    }
+
+    setSubmittedAmount(Number(amount));
+  };
 
   return (
     <section className="currency-converter" aria-labelledby="currency-converter-title">
@@ -27,23 +39,11 @@ const CurrencyConverter = () => {
         Escribe la compensación local del perfil y elige su moneda para ver el
         presupuesto en dólares.
       </p>
-
-      <div className="currency-converter__fields">
+    <form className="currency-converter__form" onSubmit={handleSubmit}>
+      <ul className="currency-converter__fields">
+      <li className="currency-converter__item">
         <label className="currency-converter__field">
-          Cantidad local
-          <input
-            className="currency-converter__input"
-            type="number"
-            min="0"
-            step="0.01"
-            placeholder="Cantidad"
-            value={amount}
-            onChange={(event) => setAmount(event.target.value)}
-          />
-        </label>
-
-        <label className="currency-converter__field">
-          Moneda
+          Selecciona la moneda origen
           <select
             className="currency-converter__select"
             value={currencyCode}
@@ -56,7 +56,29 @@ const CurrencyConverter = () => {
             ))}
           </select>
         </label>
-      </div>
+        </li>
+
+      
+      <li className="currency-converter__item">
+        <label className="currency-converter__field">
+          Compensación base
+          <input
+            className="currency-converter__input"
+            type="text"
+            inputMode="numeric"
+            placeholder="Cantidad"
+            value={amount}
+            onChange={(event) => setAmount(event.target.value.replace(/\D/g, ''))}
+          />
+        </label>
+        {amountError ? (
+          <p className="currency-converter__status currency-converter__status_type_error" role="alert">
+            {amountError}
+          </p>
+        ) : null}
+        </li>
+        
+      </ul>
 
       {isLoading ? <p className="currency-converter__status">Cargando tasas…</p> : null}
       {error ? (
@@ -64,11 +86,28 @@ const CurrencyConverter = () => {
           No pudimos actualizar las tasas de cambio.
         </p>
       ) : null}
+      <button type="submit" className="currency-converter__button">Calcular presupuesto</button>
       {usdBudget !== null ? (
         <p className="currency-converter__result">
-          Presupuesto en dólares: <strong>{formatMoney(usdBudget, 'USD')}</strong>
+          Presupuesto en dólares:{' '}
+          <strong>
+            {new Intl.NumberFormat('es', {
+              style: 'currency',
+              currency: 'USD',
+              currencyDisplay: 'code',
+              maximumFractionDigits: 2,
+            }).format(usdBudget)}
+          </strong>
         </p>
       ) : null}
+    </form>
+    <ul className="currency-converter__quotes">
+      {quotes.map((quote) => (
+        <li key={quote.quote} className="currency-converter__quote">
+          1 {quote.base} = {quote.rate} {quote.quote} · {quote.date}
+        </li>
+      ))}
+    </ul>
     </section>
   );
 };

@@ -5,13 +5,14 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { CurrencyCode, CurrencyRates } from '../types';
+import type { CurrencyCode, CurrencyRates, ExchangeRateQuote } from '../types';
 import { fetchExchangeRates } from '../utils/currencyApi';
 
 type CurrencyContextValue = {
   currencyCode: CurrencyCode;
   setCurrencyCode: (code: CurrencyCode) => void;
   rates: CurrencyRates | null;
+  quotes: ExchangeRateQuote[];
   isLoading: boolean;
   error: string | null;
 };
@@ -20,6 +21,7 @@ const CurrencyContext = createContext<CurrencyContextValue | null>(null);
 
 export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
   const [currencyCode, setCurrencyCode] = useState<CurrencyCode>('USD');
+  const [quotes, setQuotes] = useState<ExchangeRateQuote[]>([]);
   const [rates, setRates] = useState<CurrencyRates | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +37,8 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
         const response = await fetchExchangeRates();
 
         if (!isCancelled) {
-          setRates(response);
+          setRates(response.rates);
+          setQuotes(response.quotes);
         }
       } catch (err) {
         if (!isCancelled) {
@@ -61,7 +64,7 @@ export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CurrencyContext.Provider
-      value={{ currencyCode, setCurrencyCode, rates, isLoading, error }}
+      value={{ currencyCode, setCurrencyCode, rates, quotes, isLoading, error }}
     >
       {children}
     </CurrencyContext.Provider>

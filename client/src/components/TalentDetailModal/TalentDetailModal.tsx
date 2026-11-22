@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import type { TalentProfile } from '../../types';
-import { useCurrency } from '../../context/CurrencyContext';
-import { currencyFromLocation, formatMoney } from '../../utils/localCurrency';
 import './talentDetailModal.css';
 
 type TalentDetailModalProps = {
@@ -11,8 +9,6 @@ type TalentDetailModalProps = {
 
 const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const { rates, isLoading } = useCurrency();
-
   useEffect(() => {
     if (!profile) {
       return;
@@ -38,13 +34,6 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
   if (!profile) {
     return null;
   }
-
-  const localCurrency = currencyFromLocation(profile.location);
-  const localRate = rates?.[localCurrency];
-  const localAmount =
-    localRate !== undefined && localRate > 0
-      ? profile.baseCompensation * localRate
-      : null;
 
   return (
     <div
@@ -85,11 +74,12 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
         <p className="talent-modal__detail">
           Compensación base:{' '}
           <strong>
-            {localAmount !== null
-              ? formatMoney(localAmount, localCurrency)
-              : isLoading
-                ? 'Cargando tasa…'
-                : 'Tasa no disponible'}
+            {new Intl.NumberFormat('es', {
+              style: 'currency',
+              currency: profile.currency,
+              currencyDisplay: 'code',
+              maximumFractionDigits: 0,
+            }).format(profile.baseCompensation)}
           </strong>
         </p>
         <ul className="talent-modal__skills">
@@ -98,14 +88,11 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
           ))}
         </ul>
         {profile.portfolioUrl ? (
-          <a
+          <p
             className="talent-modal__link"
-            href={profile.portfolioUrl}
-            target="_blank"
-            rel="noreferrer"
           >
             Ver portafolio
-          </a>
+          </p>
         ) : (
           <p className="talent-modal__detail">Este perfil no incluye portafolio.</p>
         )}

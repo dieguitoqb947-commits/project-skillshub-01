@@ -1,6 +1,4 @@
 import type { TalentProfile } from '../../types/index';
-import { useCurrency } from '../../context/CurrencyContext';
-import { currencyFromLocation, formatMoney } from '../../utils/localCurrency';
 import './talentCard.css';
 
 type TalentCardProps = {
@@ -9,14 +7,7 @@ type TalentCardProps = {
 };
 
 const TalentCard = ({ profile, onOpen }: TalentCardProps) => {
-  const { rates, isLoading } = useCurrency();
   const initial = profile.fullName.trim().charAt(0).toUpperCase();
-  const localCurrency = currencyFromLocation(profile.location);
-  const localRate = rates?.[localCurrency];
-  const localAmount =
-    localRate !== undefined && localRate > 0
-      ? profile.baseCompensation * localRate
-      : null;
 
   return (
     <article className="talent-card">
@@ -46,11 +37,12 @@ const TalentCard = ({ profile, onOpen }: TalentCardProps) => {
       <footer className="talent-card__footer">
         <span className="talent-card__compensation-label">Compensación base</span>
         <strong className="talent-card__compensation">
-          {localAmount !== null
-            ? formatMoney(localAmount, localCurrency)
-            : isLoading
-              ? 'Cargando tasa…'
-              : 'Tasa no disponible'}
+          {new Intl.NumberFormat('es', {
+            style: 'currency',
+            currency: profile.currency,
+            currencyDisplay: 'code',
+            maximumFractionDigits: 0,
+          }).format(profile.baseCompensation)}
         </strong>
       </footer>
       <button type="button" className="talent-card__button" onClick={() => onOpen(profile)}>

@@ -5,7 +5,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-1',
     roleTitle: 'Desarrollador Front-End React',
     category: 'Tecnología',
-    baseCompensation: 3800,
+    currency: 'COP',
+    baseCompensation: 9000000,
     summary:
       'Construye interfaces accesibles con React y TypeScript para productos digitales en crecimiento.',
     fullName: 'Juan Pérez',
@@ -20,7 +21,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-2',
     roleTitle: 'Backend Node.js / MongoDB',
     category: 'Tecnología',
-    baseCompensation: 4500,
+    currency: 'MXN',
+    baseCompensation: 60000,
     summary:
       'Diseña APIs REST escalables, validación en servidor y modelos con Mongoose.',
     fullName: 'Andrés Molina',
@@ -34,7 +36,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-3',
     roleTitle: 'Ingeniera DevOps',
     category: 'Tecnología',
-    baseCompensation: 5200,
+    currency: 'ARS',
+    baseCompensation: 5000000,
     summary:
       'Automatiza pipelines CI/CD y monitoreo en entornos cloud para equipos ágiles.',
     fullName: 'Laura Peña',
@@ -48,7 +51,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-4',
     roleTitle: 'QA Automation Engineer',
     category: 'Tecnología',
-    baseCompensation: 3400,
+    currency: 'COP',
+    baseCompensation: 8000000,
     summary:
       'Pruebas E2E y regresión con Playwright y Cypress en aplicaciones web críticas.',
     fullName: 'Diego Ramírez',
@@ -62,7 +66,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-5',
     roleTitle: 'Coach de inglés técnico',
     category: 'Idiomas',
-    baseCompensation: 2800,
+    currency: 'PEN',
+    baseCompensation: 7000,
     summary:
       'Prepara profesionales para entrevistas y reuniones en inglés en entornos de software.',
     fullName: 'Sofía Duarte',
@@ -76,7 +81,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-6',
     roleTitle: 'Especialista en comunicación laboral',
     category: 'Idiomas',
-    baseCompensation: 2600,
+    currency: 'EUR',
+    baseCompensation: 1600,
     summary:
       'Facilita reuniones bilingües y redacción profesional para equipos distribuidos.',
     fullName: 'Daniel Ortiz',
@@ -90,7 +96,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-7',
     roleTitle: 'Traductora PT–ES para producto',
     category: 'Idiomas',
-    baseCompensation: 2400,
+    currency: 'BRL',
+    baseCompensation: 9000,
     summary:
       'Localiza interfaces y documentación del portugués brasileño al español latino.',
     fullName: 'Marina Costa',
@@ -104,7 +111,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-8',
     roleTitle: 'Profesora de francés negocios',
     category: 'Idiomas',
-    baseCompensation: 2700,
+    currency: 'CAD',
+    baseCompensation: 2600,
     summary:
       'Francés profesional para correos, contratos y reuniones con clientes europeos.',
     fullName: 'Claire Martin',
@@ -118,7 +126,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-9',
     roleTitle: 'Diseñadora UI responsive',
     category: 'Diseño',
-    baseCompensation: 3600,
+    currency: 'CLP',
+    baseCompensation: 2400000,
     summary:
       'Maquetación mobile-first, sistemas de espaciado y handoff claro hacia desarrollo.',
     fullName: 'Valentina Ríos',
@@ -133,7 +142,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-10',
     roleTitle: 'Diseñador de identidad digital',
     category: 'Diseño',
-    baseCompensation: 4200,
+    currency: 'UYU',
+    baseCompensation: 120000,
     summary:
       'Define paleta, tipografía y componentes para marcas coherentes en web y móvil.',
     fullName: 'Julián Castro',
@@ -147,7 +157,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-11',
     roleTitle: 'Diseñadora UX/UI',
     category: 'Diseño',
-    baseCompensation: 3900,
+    currency: 'EUR',
+    baseCompensation: 2400,
     summary:
       'Investigación ligera, wireframes y prototipos para equipos de producto.',
     fullName: 'Elena Vargas',
@@ -161,7 +172,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-12',
     roleTitle: 'Motion designer para producto',
     category: 'Diseño',
-    baseCompensation: 3700,
+    currency: 'USD',
+    baseCompensation: 2500,
     summary:
       'Microinteracciones y animación ligera para mejorar percepción de calidad en SaaS.',
     fullName: 'Mateo Silva',
@@ -175,7 +187,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-13',
     roleTitle: 'Consultor de estrategia y pitch',
     category: 'Negocios',
-    baseCompensation: 4100,
+    currency: 'MXN',
+    baseCompensation: 55000,
     summary:
       'Narrativa de producto y pitch para rondas con inversores o clientes enterprise.',
     fullName: 'Ricardo Méndez',
@@ -189,7 +202,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-14',
     roleTitle: 'Analista de pricing freelance',
     category: 'Negocios',
-    baseCompensation: 3200,
+    currency: 'COP',
+    baseCompensation: 7000000,
     summary:
       'Modelos de tarifas y márgenes para contratación de talento internacional.',
     fullName: 'Paula Navarro',
@@ -203,7 +217,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-15',
     roleTitle: 'Growth y lanzamiento digital',
     category: 'Negocios',
-    baseCompensation: 4000,
+    currency: 'MXN',
+    baseCompensation: 50000,
     summary:
       'Go-to-market de 30 días con métricas claras para productos en etapa temprana.',
     fullName: 'Héctor Salinas',
@@ -217,7 +232,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-16',
     roleTitle: 'Especialista en contratación remota',
     category: 'Negocios',
-    baseCompensation: 3500,
+    currency: 'CRC',
+    baseCompensation: 1000000,
     summary:
       'Procesos de selección y onboarding para equipos distribuidos en varios países.',
     fullName: 'Isabel Torres',
@@ -231,7 +247,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-17',
     roleTitle: 'Desarrolladora mobile React Native',
     category: 'Tecnología',
-    baseCompensation: 4100,
+    currency: 'COP',
+    baseCompensation: 10000000,
     summary:
       'Apps cross-platform con React Native, publicación en stores y métricas básicas.',
     fullName: 'Camila Herrera',
@@ -245,7 +262,8 @@ export const TALENT_PROFILES: TalentProfile[] = [
     id: 'talent-18',
     roleTitle: 'Data analyst para startups',
     category: 'Negocios',
-    baseCompensation: 3700,
+    currency: 'EUR',
+    baseCompensation: 2200,
     summary:
       'Dashboards y KPIs accionables para decisiones de producto y contratación.',
     fullName: 'Felipe Gómez',

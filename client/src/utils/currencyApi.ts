@@ -5,7 +5,7 @@ const QUOTES = SUPPORTED_CURRENCIES.filter(
   (code): code is Exclude<CurrencyCode, 'USD'> => code !== 'USD',
 );
 
-export const fetchExchangeRates = async (): Promise<CurrencyRates> => {
+export const fetchExchangeRates = async (): Promise<{ rates: CurrencyRates; quotes: ExchangeRateQuote[] }> => {
   try {
     const res = await fetch(FRANKFURTER_API_URL);
     if (!res.ok) {
@@ -42,7 +42,7 @@ export const fetchExchangeRates = async (): Promise<CurrencyRates> => {
       throw new Error(`Missing exchange rates: ${missing.join(', ')}`);
     }
 
-    return rates;
+    return { rates, quotes: data };
   } catch (error) {
     console.error('Error fetching exchange rates:', error);
     throw error;
