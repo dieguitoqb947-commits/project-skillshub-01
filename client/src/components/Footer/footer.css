@@ -1,0 +1,82 @@
+.footer {
+    background-color: #234657;
+    color: #ffffff;
+    padding: 2.5rem 2rem;
+    margin-top: auto;
+}
+
+.footer__container {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.footer__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer__description {
+    margin: 0;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer__link {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+    color: #ffffff;
+}
+
+.footer__copy {
+    width: 100%;
+    margin: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 320px) {
+    .footer__container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+      }
+
+
+    .footer__container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+}

@@ -1,0 +1,155 @@
+.talent-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  width: 100%;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.25rem 1.25rem 1rem;
+  border: 1px solid #d7e2ee;
+  border-radius: 14px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, #d7e6f5, #fff) border-box;
+  box-shadow: 0 8px 24px rgba(40, 92, 134, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+.talent-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(40, 92, 134, 0.14);
+}
+
+.talent-card__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.talent-card__category {
+  margin: 0;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1d4f78;
+  background-color: #e7f1fa;
+  border-radius: 999px;
+}
+
+.talent-card__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #16324a;
+}
+
+.talent-card__person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.talent-card__avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #285c86;
+  color: #fff;
+  font-weight: 700;
+}
+
+.talent-card__name,
+.talent-card__location,
+.talent-card__compensation-label {
+  margin: 0;
+}
+
+.talent-card__name {
+  font-weight: 600;
+  color: #1f2430;
+}
+
+.talent-card__location {
+  font-size: 0.875rem;
+  color: #5a6475;
+}
+
+.talent-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.talent-card__skill {
+  padding: 0.28rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #285c86;
+  background-color: #f4f8fc;
+  border: 1px solid #d5e4f2;
+  border-radius: 999px;
+}
+
+.talent-card__footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid #e6eef6;
+}
+
+.talent-card__compensation-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #6b7686;
+}
+
+.talent-card__compensation {
+  font-size: 1.05rem;
+  text-align: right;
+  color: #285c86;
+}
+
+.talent-card__button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #285c86;
+  border-radius: 999px;
+  background-color: #fff;
+  color: #285c86;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.talent-card__button:hover,
+.talent-card__button:focus-visible {
+  background-color: #285c86;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .talent-card {
+    transition: none;
+  }
+
+  .talent-card:hover {
+    transform: none;
+  }
+}

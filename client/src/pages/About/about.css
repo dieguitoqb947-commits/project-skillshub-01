@@ -1,0 +1,61 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 100%;
+  padding: 9rem 1.25rem 4rem;
+  box-sizing: border-box;
+}
+
+.about__intro {
+  max-width: 42rem;
+  text-align: center;
+}
+
+.about__title {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #285c86;
+}
+
+.about__lead {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  opacity: 0.85;
+}
+
+.about__card {
+  width: 100%;
+  max-width: 42rem;
+  padding: 1.5rem;
+  border: 1px solid #d7e2ee;
+  border-radius: 14px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(40, 92, 134, 0.08);
+}
+
+.about__heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  color: #16324a;
+}
+
+.about__card p {
+  margin: 0 0 0.75rem;
+  line-height: 1.6;
+}
+
+.about__card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding-top: 12rem;
+  }
+}
