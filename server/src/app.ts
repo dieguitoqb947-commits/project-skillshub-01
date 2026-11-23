@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { env } from './config/env.js';
 import { errorHandler } from './middleware/error-handler.js';
+import { createUser, loginUser } from './controllers/users.js';
+import { registerLimiter, loginLimiter } from './middleware/limiter.js';
 
 
 
@@ -20,6 +22,9 @@ app.get('/health', (_req, res) => {
     error: null,
   })
 });
+
+app.post("/signup", registerLimiter, createUser);
+app.post("/signin", loginLimiter, loginUser);
 
 
 app.use(errorHandler)

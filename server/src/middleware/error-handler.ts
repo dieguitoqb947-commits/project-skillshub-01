@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 
 export const errorHandler = (
   err: Error & { statusCode?: number },
-  req: Request,
+  _req: Request,
   res: Response,
   _next: NextFunction,
 ): void => {
