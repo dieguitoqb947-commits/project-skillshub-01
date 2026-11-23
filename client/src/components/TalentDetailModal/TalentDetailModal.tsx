@@ -88,11 +88,14 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
           ))}
         </ul>
         {profile.portfolioUrl ? (
-          <p
+          <a
             className="talent-modal__link"
+            href={profile.portfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Ver portafolio
-          </p>
+          </a>
         ) : (
           <p className="talent-modal__detail">Este perfil no incluye portafolio.</p>
         )}

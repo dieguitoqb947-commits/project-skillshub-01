@@ -6,6 +6,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  
 }
 
 .header__nav {
@@ -23,6 +24,7 @@
 }
 
 .header__logo {
+  text-decoration: none;
   font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
@@ -32,6 +34,7 @@
   display: flex;
   align-items: center;
   gap: 1.75rem;
+  list-style: none;
 }
 
 .header__link {

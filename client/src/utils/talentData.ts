@@ -15,7 +15,7 @@ export const TALENT_PROFILES: TalentProfile[] = [
     location: 'Bogotá, Colombia',
     experienceYears: 5,
     keySkills: ['React', 'TypeScript', 'CSS', 'Vite'],
-    portfolioUrl: 'https://www.juanperez.com',
+    portfolioUrl: 'https://www.juan.com',
   },
   {
     id: 'talent-2',

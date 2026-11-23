@@ -58,9 +58,9 @@ const Explorar = () => {
     <CurrencyProvider>
     <section className="explorar" aria-labelledby="explorar-title">
       <aside className="explorar__panel">
-      <h1 className="explorar__panel-title" id="home-title">
+      <h2 className="explorar__panel-title" id="explorar-title">
           Skills<span className="explorar__panel-title-accent">Hub</span>
-        </h1>
+        </h2>
         <CurrencyConverter />
       </aside>
       <div className="explorar__main">

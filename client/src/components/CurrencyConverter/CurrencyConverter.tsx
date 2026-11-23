@@ -69,6 +69,7 @@ const CurrencyConverter = () => {
             placeholder="Cantidad"
             value={amount}
             onChange={(event) => setAmount(event.target.value.replace(/\D/g, ''))}
+            required
           />
         </label>
         {amountError ? (

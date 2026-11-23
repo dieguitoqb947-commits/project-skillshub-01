@@ -38,12 +38,13 @@
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  font-family: 'Times New Roman Condensed';
+  font-family: 'Times New Roman Condensed', 'Times New Roman', Times, serif;
   font-size: clamp(3.5rem, 18vw, 12rem);
 }
 
 .home__title-accent {
-  font-family: 'Times New Roman Condensed Italic';
+  font-family: 'Times New Roman Condensed Italic', 'Times New Roman', Times, serif;
+  font-style: italic;
   color: #ff8a3d;
 }
 

@@ -6,8 +6,8 @@
 
 ## Enlaces de Despliegue (Producción)
 
-* **Aplicación Front End (Vercel):
-* **API Back End :
+* **Aplicación Front End (Vercel): Proximamente**
+* **API Back End : Proximamente**
 
 ---
 
