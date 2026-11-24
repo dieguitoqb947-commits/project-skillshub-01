@@ -4,7 +4,9 @@ import { env } from './config/env.js';
 import { errorHandler } from './middleware/error-handler.js';
 import { createUser, loginUser } from './controllers/users.js';
 import { registerLimiter, loginLimiter } from './middleware/limiter.js';
-
+import usersRouter from './routes/users.js';
+import offersRouter from './routes/offers.js';
+import { notFound } from './middleware/not-found.js';
 
 
 const app = express();
@@ -25,8 +27,10 @@ app.get('/health', (_req, res) => {
 
 app.post("/signup", registerLimiter, createUser);
 app.post("/signin", loginLimiter, loginUser);
+app.use('/users', usersRouter);
+app.use('/offers', offersRouter);
 
-
+app.use(notFound);
 app.use(errorHandler)
 
 

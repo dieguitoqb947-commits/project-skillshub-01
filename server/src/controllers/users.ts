@@ -5,6 +5,27 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 
+
+
+export const getCurrentUser = async (req: Request, res: Response) => {
+    const user = await User.findById(req.user?.userId) 
+    if(!user) {
+        throw Object.assign(
+            new Error('El usuario no existe'), { statusCode: 404 }
+        )
+    }
+
+    res.status(200).json({
+        success: true,
+        data: {
+            name: user.name,
+            email: user.email,
+        },
+        error: null,
+    });
+};
+
+
 export const createUser = async (req: Request, res: Response) => {
     const { name, email, password } = req.body as { name: string, email: string, password: string };
 
