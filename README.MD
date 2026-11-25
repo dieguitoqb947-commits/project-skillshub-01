@@ -6,8 +6,8 @@
 
 ## Enlaces de Despliegue (Producción)
 
-* **Aplicación Front End (Vercel): Proximamente**
-* **API Back End : Proximamente**
+* **Aplicación Front End (Vercel): https://project-skillshub-01-client.vercel.app/
+* **API Back End : https://project-skillshub-01-server.vercel.app/
 
 ---
 
