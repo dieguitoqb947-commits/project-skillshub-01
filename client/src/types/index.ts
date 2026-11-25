@@ -43,3 +43,55 @@ export type TalentFilterState = {
   category: SkillCategory | '';
   location: string;
 };
+
+export type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+};
+
+export interface AuthUser {
+  userId: string;
+  name: string;
+  email: string;
+}
+
+export type SigninData = {
+  token: string;
+  userId: string;
+  name: string;
+  email: string;
+}
+
+export type SignupData = AuthUser;
+
+export type ErrorResponse = {
+  message: string;
+}
+
+
+export interface CurrentUser {
+  name: string;
+  email: string;
+}
+
+export interface CurrentUserWithToken extends CurrentUser {
+  token: string;
+}
+
+export interface Offer {
+  _id: string;
+  owner: string;
+  talentId: string;
+  talentName: string;
+  offeredAmountUsd: number;
+  floorUsd: number;
+}
+
+export interface CreateOfferInput {
+  talentId: string;
+  talentName: string;
+  offeredAmountUsd: number;
+  floorUsd: number;
+}
+
+
