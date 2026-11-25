@@ -1,5 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 import type { TalentProfile } from '../../types';
+import { useCurrentUser } from '../../context/CurrentUserContext';
+import { useCurrency } from '../../context/CurrencyContext';
+import { AuthApiError, createOffer } from '../../utils/api';
 import './talentDetailModal.css';
 
 type TalentDetailModalProps = {
@@ -8,7 +11,32 @@ type TalentDetailModalProps = {
 };
 
 const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
+  const { currentUser } = useCurrentUser();
+  const { rates, isLoading: ratesLoading } = useCurrency();
+  const [amount, setAmount] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
+
+  const rate = profile ? rates?.[profile.currency] : undefined;
+  const floorUsd =
+    profile && rate !== undefined && rate > 0
+      ? Math.round(
+          (profile.currency === 'USD'
+            ? profile.baseCompensation
+            : profile.baseCompensation / rate) * 100,
+        ) / 100
+      : null;
+
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setAmount('');
+    setError(null);
+    setSent(false);
+    setSubmitting(false);
+  }, [profile?.id]);
+
   useEffect(() => {
     if (!profile) {
       return;
@@ -30,6 +58,35 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
       document.removeEventListener('keydown', onKeyDown);
     };
   }, [profile, onClose]);
+
+  const handleSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!profile || !currentUser || floorUsd === null) return;
+
+    const offeredAmountUsd = Number(amount);
+    if (!Number.isFinite(offeredAmountUsd) || offeredAmountUsd <= floorUsd) {
+      setError('La oferta debe ser mayor a la base en dólares.');
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      await createOffer(currentUser.token, {
+        talentId: profile.id,
+        talentName: `${profile.fullName} · ${profile.roleTitle}`,
+        offeredAmountUsd,
+        floorUsd,
+      });
+      setSent(true);
+      setAmount('');
+    } catch (err) {
+      setError(err instanceof AuthApiError ? err.message : 'No se pudo enviar la oferta.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (!profile) {
     return null;
@@ -99,6 +156,43 @@ const TalentDetailModal = ({ profile, onClose }: TalentDetailModalProps) => {
         ) : (
           <p className="talent-modal__detail">Este perfil no incluye portafolio.</p>
         )}
+        {ratesLoading ? <p className="talent-modal__detail">Calculando base en dólares...</p> : null}
+        {!ratesLoading && floorUsd === null ? (
+          <p className="talent-modal__detail">No se pudo calcular la base en dólares.</p>
+        ) : null}
+        {floorUsd !== null ? (
+          <p className="talent-modal__detail">
+            Base en dólares: <strong>{floorUsd} USD</strong>
+          </p>
+        ) : null}
+        {currentUser && floorUsd !== null ? (
+          <form className="talent-modal__offer" onSubmit={handleSubmit}>
+            <label className="talent-modal__field">
+              Tu oferta en USD
+              <input
+                className="talent-modal__input"
+                type="number"
+                min={floorUsd}
+                step="0.01"
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
+                required
+              />
+            </label>
+            {error ? (
+              <p className="talent-modal__error" role="alert">
+                {error}
+              </p>
+            ) : null}
+            {sent ? <p className="talent-modal__success">Oferta enviada.</p> : null}
+            <button className="talent-modal__submit" type="submit" disabled={submitting}>
+              {submitting ? 'Enviando...' : 'Enviar oferta'}
+            </button>
+          </form>
+        ) : null}
+        {!currentUser ? (
+          <p className="talent-modal__detail">Inicia sesión para enviar una oferta.</p>
+        ) : null}
       </div>
     </div>
   );

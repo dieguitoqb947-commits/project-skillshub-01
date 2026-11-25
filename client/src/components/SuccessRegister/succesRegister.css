@@ -1,0 +1,88 @@
+.success-register {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: rgba(15, 35, 52, 0.55);
+}
+
+.success-register__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 22rem);
+  padding: 2.5rem 1.5rem 1.75rem;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 24px 48px rgba(22, 50, 74, 0.28);
+  text-align: center;
+}
+
+.success-register__close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #eef4fa;
+  color: #285c86;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.success-register__close:hover,
+.success-register__close:focus-visible {
+  background-color: #285c86;
+  color: #fff;
+}
+
+.success-register__icon {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+}
+
+.success-register__icon svg {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.success-register__icon path {
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.success-register__icon_success {
+  background-color: #e7f6ee;
+}
+
+.success-register__icon_success path {
+  stroke: #1f7a45;
+}
+
+.success-register__icon_error {
+  background-color: #fdecea;
+}
+
+.success-register__icon_error path {
+  stroke: #b13711;
+}
+
+.success-register__message {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #16324a;
+}

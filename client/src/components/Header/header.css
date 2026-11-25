@@ -49,14 +49,29 @@
   color: #ffffff;
 }
 
+.header__session {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header__user {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
 .header__cta {
   padding: 0.625rem 1.5rem;
+  border: none;
   background-color: #ffffff;
   color: #1f2430;
   text-decoration: none;
   border-radius: 999px;
+  font: inherit;
   font-size: 0.9375rem;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 

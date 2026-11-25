@@ -96,3 +96,63 @@
   font-weight: 700;
   color: #285c86;
 }
+
+.talent-modal__offer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.talent-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #285c86;
+}
+
+.talent-modal__input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font: inherit;
+  font-weight: 400;
+  color: #16324a;
+  background-color: #fff;
+}
+
+.talent-modal__error {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #b13711;
+}
+
+.talent-modal__success {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #1f7a45;
+}
+
+.talent-modal__submit {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #285c86;
+  border-radius: 999px;
+  background-color: #285c86;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.talent-modal__submit:hover:not(:disabled) {
+  background-color: #1d496b;
+}
+
+.talent-modal__submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}

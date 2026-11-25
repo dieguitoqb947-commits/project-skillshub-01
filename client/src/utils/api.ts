@@ -6,6 +6,8 @@ import type {
   ErrorResponse,
   SigninData,
   SignupData,
+  Offer,
+  CreateOfferInput,
 } from "../types";
 
 
@@ -76,6 +78,29 @@ export async function signup(credentials: SignupCredentials): Promise<AuthUser> 
         body: JSON.stringify(credentials),
     })
     return response.data;
+}
+
+export async function getOffers(token: string): Promise<Offer[]> {
+  const response = await authRequest<ApiResponse<{ offers: Offer[] }>>('/offers', {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data.offers;
+}
+export async function createOffer(token: string, input: CreateOfferInput): Promise<Offer> {
+  const response = await authRequest<ApiResponse<{ offer: Offer }>>('/offers', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body: JSON.stringify(input),
+  });
+  return response.data.offer;
+}
+export async function deleteOffer(token: string, offerId: string): Promise<Offer> {
+  const response = await authRequest<ApiResponse<Offer>>(`/offers/${offerId}`, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
 }
 
 
