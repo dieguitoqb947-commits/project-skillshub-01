@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { LIMITS } from '../utils/constants.js';
 
 const userSchema = new mongoose.Schema({
     name: { 
@@ -13,7 +14,7 @@ const userSchema = new mongoose.Schema({
     password: { 
         type: String, 
         required: true, 
-        minlength: 8, },
+        minlength: LIMITS.passwordMinLength, },
 })
 
 const User = mongoose.model('User', userSchema);

@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { ERROR_MESSAGES } from '../utils/constants.js';
 
 dotenv.config();
 
@@ -6,7 +7,7 @@ const required = (name: string): string => {
   const value = process.env[name]?.trim();
 
   if (!value) {
-    console.error(`Falta la variable de entorno ${name}`);
+    console.error(ERROR_MESSAGES.missingEnv(name));
     process.exit(1);
   }
 
@@ -16,7 +17,7 @@ const required = (name: string): string => {
 const port = Number(required('PORT'));
 
 if (!Number.isInteger(port) || port <= 0) {
-  console.error('La variable de entorno PORT debe ser un número válido');
+  console.error(ERROR_MESSAGES.invalidPort);
   process.exit(1);
 }
 

@@ -1,13 +1,14 @@
 import { rateLimit } from "express-rate-limit";
+import { ERROR_MESSAGES, LIMITS } from "../utils/constants.js";
 
 export const loginLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 10,
-    message: "Demasiados intentos de inicio de sesión. Inténtalo de nuevo más tarde",
+    windowMs: LIMITS.loginWindowMs,
+    limit: LIMITS.loginMaxAttempts,
+    message: ERROR_MESSAGES.tooManyLogins,
 });
 
 export const registerLimiter =  rateLimit({
-    windowMs: 60 * 60 * 1000,
-    limit: 20,
-    message: "Demasiados registros desde esta dirección. Inténtalo de nuevo más tarde.",
+    windowMs: LIMITS.registerWindowMs,
+    limit: LIMITS.registerMaxAttempts,
+    message: ERROR_MESSAGES.tooManySignups,
 })

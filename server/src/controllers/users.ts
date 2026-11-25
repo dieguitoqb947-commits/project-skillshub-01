@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
+import { ERROR_MESSAGES, LIMITS } from '../utils/constants.js';
 
 
 
@@ -11,7 +12,7 @@ export const getCurrentUser = async (req: Request, res: Response) => {
     const user = await User.findById(req.user?.userId) 
     if(!user) {
         throw Object.assign(
-            new Error('El usuario no existe'), { statusCode: 404 }
+            new Error(ERROR_MESSAGES.userNotFound), { statusCode: 404 }
         )
     }
 
@@ -31,17 +32,17 @@ export const createUser = async (req: Request, res: Response) => {
 
     if (!name || !email || !password) {
          throw Object.assign(
-            new Error('Todos los campos son requeridos'), 
+            new Error(ERROR_MESSAGES.requiredFields), 
             { statusCode: 400 });
     }
 
-    if(password.length < 8) {
+    if(password.length < LIMITS.passwordMinLength) {
         throw Object.assign(
-            new Error('La contraseña debe tener al menos 8 caracteres'), 
+            new Error(ERROR_MESSAGES.passwordMinLength), 
             { statusCode: 400 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, LIMITS.bcryptCost);
 
     try {
         const newUser = await User.create({ name, email, password: hashedPassword });
@@ -57,7 +58,7 @@ export const createUser = async (req: Request, res: Response) => {
     }catch (err: unknown) {
         if( err instanceof mongoose.mongo.MongoServerError && err.code === 11000){
             throw Object.assign(
-              new Error("El correo ya está en uso"),
+              new Error(ERROR_MESSAGES.emailInUse),
               { statusCode: 409 }
             );
         }
@@ -72,25 +73,25 @@ export const loginUser = async (req: Request, res: Response) => {
 
     if(!email || !password) {
         throw Object.assign(
-            new Error('El correo y contraseña son necesarios para iniciar sesión'), 
+            new Error(ERROR_MESSAGES.loginRequired), 
             { statusCode: 400 });
     }
 
     const user = await User.findOne( { email })
     if(!user) {
         throw Object.assign(
-            new Error('Credenciales incorrectas'), 
+            new Error(ERROR_MESSAGES.invalidCredentials), 
             { statusCode: 401 });
     }
 
     const isValidPassword = await bcrypt.compare(password, user.password);
     if(!isValidPassword) {
         throw Object.assign(
-            new Error('Credenciales incorrectas'), 
+            new Error(ERROR_MESSAGES.invalidCredentials), 
             { statusCode: 401 });
     }
 
-    const token = jwt.sign({ userId: user._id}, env.jwtSecret, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: user._id}, env.jwtSecret, { expiresIn: LIMITS.jwtExpiresIn });
     res.status(200).json({
         success: true,
         data: {

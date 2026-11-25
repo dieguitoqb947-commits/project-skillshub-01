@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ERROR_MESSAGES } from "../utils/constants.js";
 
 const offerSchema = new mongoose.Schema({
     owner: {
@@ -19,7 +20,7 @@ const offerSchema = new mongoose.Schema({
         required: true,
         validate: {
             validator: (value: number) => value > 0,
-            message: "La oferta debe ser mayor que 0",
+            message: ERROR_MESSAGES.offerMustBePositive,
         },
     },
     floorUsd: {
@@ -27,7 +28,7 @@ const offerSchema = new mongoose.Schema({
         required: true,
         validate: {
             validator: (value: number) => value > 0,
-            message: "El piso debe ser mayor que 0",
+            message: ERROR_MESSAGES.floorMustBePositive,
         },
     },
 });
